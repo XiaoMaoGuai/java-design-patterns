@@ -1,6 +1,6 @@
 /**
  * The MIT License
- * Copyright (c) 2014 Ilkka Seppälä
+ * Copyright (c) 2014-2016 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -97,7 +97,7 @@ public class Character {
             .append(name)
             .append(" armed with a ")
             .append(weapon != null ? weapon : spell != null ? spell : "with nothing")
-            .append(abilities != null ? (" and wielding " + abilities + " abilities") : "")
+            .append(abilities != null ? " and wielding " + abilities + " abilities" : "")
             .append('.');
     return sb.toString();
   }

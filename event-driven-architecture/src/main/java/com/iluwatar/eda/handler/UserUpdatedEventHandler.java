@@ -1,6 +1,6 @@
 /**
  * The MIT License
- * Copyright (c) 2014 Ilkka Seppälä
+ * Copyright (c) 2014-2016 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -22,19 +22,20 @@
  */
 package com.iluwatar.eda.handler;
 
-import com.iluwatar.eda.event.Event;
 import com.iluwatar.eda.event.UserUpdatedEvent;
 import com.iluwatar.eda.framework.Handler;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Handles the {@link UserUpdatedEvent} message.
  */
 public class UserUpdatedEventHandler implements Handler<UserUpdatedEvent> {
 
-  @Override
-  public void onEvent(Event message) {
+  private static final Logger LOGGER = LoggerFactory.getLogger(UserUpdatedEventHandler.class);
 
-    UserUpdatedEvent userUpdatedEvent = (UserUpdatedEvent) message;
-    System.out.printf("User with %s has been Updated!", userUpdatedEvent.getUser().getUsername());
+  @Override
+  public void onEvent(UserUpdatedEvent event) {
+    LOGGER.info("User '{}' has been Updated!", event.getUser().getUsername());
   }
 }

@@ -1,6 +1,6 @@
 /**
  * The MIT License
- * Copyright (c) 2014 Ilkka Seppälä
+ * Copyright (c) 2014-2016 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -54,7 +54,7 @@ public class CakeBakingServiceImpl implements CakeBakingService {
   public void bakeNewCake(CakeInfo cakeInfo) throws CakeBakingException {
     List<CakeTopping> allToppings = getAvailableToppingEntities();
     List<CakeTopping> matchingToppings =
-        allToppings.stream().filter((t) -> t.getName().equals(cakeInfo.cakeToppingInfo.name))
+        allToppings.stream().filter(t -> t.getName().equals(cakeInfo.cakeToppingInfo.name))
             .collect(Collectors.toList());
     if (matchingToppings.isEmpty()) {
       throw new CakeBakingException(String.format("Topping %s is not available",
@@ -64,7 +64,7 @@ public class CakeBakingServiceImpl implements CakeBakingService {
     Set<CakeLayer> foundLayers = new HashSet<>();
     for (CakeLayerInfo info : cakeInfo.cakeLayerInfos) {
       Optional<CakeLayer> found =
-          allLayers.stream().filter((layer) -> layer.getName().equals(info.name)).findFirst();
+          allLayers.stream().filter(layer -> layer.getName().equals(info.name)).findFirst();
       if (!found.isPresent()) {
         throw new CakeBakingException(String.format("Layer %s is not available", info.name));
       } else {
@@ -163,7 +163,7 @@ public class CakeBakingServiceImpl implements CakeBakingService {
       CakeToppingInfo cakeToppingInfo =
           new CakeToppingInfo(cake.getTopping().getId(), cake.getTopping().getName(), cake
               .getTopping().getCalories());
-      ArrayList<CakeLayerInfo> cakeLayerInfos = new ArrayList<>();
+      List<CakeLayerInfo> cakeLayerInfos = new ArrayList<>();
       for (CakeLayer layer : cake.getLayers()) {
         cakeLayerInfos.add(new CakeLayerInfo(layer.getId(), layer.getName(), layer.getCalories()));
       }

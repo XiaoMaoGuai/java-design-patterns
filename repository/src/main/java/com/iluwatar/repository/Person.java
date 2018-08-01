@@ -1,6 +1,6 @@
 /**
  * The MIT License
- * Copyright (c) 2014 Ilkka Seppälä
+ * Copyright (c) 2014-2016 Ilkka Seppälä
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -97,9 +97,9 @@ public class Person {
     final int prime = 31;
     int result = 1;
     result = prime * result + age;
-    result = prime * result + ((id == null) ? 0 : id.hashCode());
-    result = prime * result + ((name == null) ? 0 : name.hashCode());
-    result = prime * result + ((surname == null) ? 0 : surname.hashCode());
+    result = prime * result + (id == null ? 0 : id.hashCode());
+    result = prime * result + (name == null ? 0 : name.hashCode());
+    result = prime * result + (surname == null ? 0 : surname.hashCode());
     return result;
   }
 
